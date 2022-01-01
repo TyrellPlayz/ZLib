@@ -8,9 +8,13 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
+
+plugins {
+    id 'java'
+    id 'idea'
+    id 'maven-publish'
+}
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'maven-publish'
 
 version = "${project.mod_version}"
 group = 'com.tyrellplayz.zlib'
@@ -105,20 +109,44 @@ jar {
     finalizedBy 'reobfJar'
 }
 
-// Example configuration to allow publishing using the maven-publish plugin
-// This is the preferred method to reobfuscate your jar file
-// jar.finalizedBy('reobfJar')
-// However if you are in a multi-project build, dev time needs unobfed jar files, so you can delay the obfuscation until publishing by doing
-// publish.dependsOn('reobfJar')
+task sourcesJar(type: Jar) {
+    duplicatesStrategy(DuplicatesStrategy.FAIL)
+    archiveClassifier.set('sources')
+    from sourceSets.main.allJava
+}
+
+task deobfJar(type: Jar) {
+    duplicatesStrategy(DuplicatesStrategy.FAIL)
+    archiveClassifier.set('deobf')
+    from sourceSets.main.output
+}
+
+artifacts {
+    archives sourcesJar
+    archives deobfJar
+}
+
+reobf {
+    jar { classpath.from(sourceSets.main.compileClasspath) }
+}
+
+task reobf {
+    dependsOn reobfJar
+}
 
 publishing {
     repositories {
         mavenLocal()
     }
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = project.archivesBaseName
-            from components.java
+    publications { PublicationContainer publicationContainer ->
+        publicationContainer.register("maven", MavenPublication) { MavenPublication publication ->
+            publication.artifacts = [jar, deobfJar, sourcesJar]
+            publication.artifactId =  project.archivesBaseName
         }
+
+        //mavenJava(MavenPublication) {
+        //    artifactId = project.archivesBaseName
+        //    from components.java
+        //}
     }
 }

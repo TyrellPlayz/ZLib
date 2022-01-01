@@ -91,6 +91,7 @@ public abstract class ZContainerMenu extends AbstractContainerMenu {
      */
     public abstract MoveResponse quickMoveStackToContainer(ItemStack stack, int slotIndex);
 
+
     @Override
     public ItemStack quickMoveStack(Player player, int slotIndex) {
         ItemStack itemstack = ItemStack.EMPTY;
