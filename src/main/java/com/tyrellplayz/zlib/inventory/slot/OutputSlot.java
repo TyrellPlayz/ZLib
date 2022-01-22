@@ -1,4 +1,4 @@
-package tyrellplayz.zlib.inventory.slot;
+package com.tyrellplayz.zlib.inventory.slot;
 
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;

@@ -1,5 +1,6 @@
-package tyrellplayz.zlib.client;
+package com.tyrellplayz.zlib.client;
 
+import com.tyrellplayz.zlib.Config;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -11,7 +12,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import tyrellplayz.zlib.Config;
 
 @OnlyIn(Dist.CLIENT)
 public class ClientEvents {

@@ -1,13 +1,13 @@
-package tyrellplayz.zlib.proxy;
+package com.tyrellplayz.zlib.proxy;
 
+import com.tyrellplayz.zlib.client.ClientEvents;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import tyrellplayz.zlib.client.ClientEvents;
 
 @OnlyIn(Dist.CLIENT)
-public class ClientProxy implements IProxy {
+public class ClientProxy implements ModProxy {
 
     @Override
     public void onClientSetup(FMLClientSetupEvent fmlClientSetupEvent) {

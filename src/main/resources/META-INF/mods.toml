@@ -1,7 +1,7 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
-license="All rights reserved"
-#issueTrackerURL="" #optional
+license="GPLv3"
+issueTrackerURL="https://github.com/TyrellPlayz/ZLib/issues" #optional
 [[mods]]
 modId="zlib"
 version="${mod_version}"

@@ -1,6 +1,7 @@
-package tyrellplayz.zlib.util;
+package com.tyrellplayz.zlib.util;
 
 import com.google.common.collect.Lists;
+import com.tyrellplayz.zlib.ZLib;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -10,7 +11,6 @@ import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplate;
-import tyrellplayz.zlib.ZLib;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -33,7 +33,7 @@ public class StructureUtil {
         if (optional.isPresent()) {
             return optional.get();
         }else {
-            ZLib.getLogger().error("Could not find structure file " + location + ".");
+            ZLib.LOGGER.error("Could not find structure file " + location + ".");
             return null;
         }
     }

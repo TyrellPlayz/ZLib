@@ -1,4 +1,4 @@
-package tyrellplayz.zlib.inventory;
+package com.tyrellplayz.zlib.inventory;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;

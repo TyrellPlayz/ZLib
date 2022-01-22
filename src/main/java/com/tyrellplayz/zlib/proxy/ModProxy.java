@@ -1,9 +1,9 @@
-package tyrellplayz.zlib.proxy;
+package com.tyrellplayz.zlib.proxy;
 
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
-public interface IProxy {
+public interface ModProxy {
 
     default void onCommonSetup(FMLCommonSetupEvent fmlCommonSetupEvent) {}
 

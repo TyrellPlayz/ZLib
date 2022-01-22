@@ -1,5 +1,8 @@
-package tyrellplayz.zlib;
+package com.tyrellplayz.zlib;
 
+import com.tyrellplayz.zlib.proxy.ClientProxy;
+import com.tyrellplayz.zlib.proxy.CommonProxy;
+import com.tyrellplayz.zlib.proxy.ModProxy;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -10,17 +13,14 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import tyrellplayz.zlib.proxy.ClientProxy;
-import tyrellplayz.zlib.proxy.CommonProxy;
-import tyrellplayz.zlib.proxy.IProxy;
 
 @Mod(ZLib.MOD_ID)
 public class ZLib {
 
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MOD_ID = "zlib";
 
-    public static IProxy proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+    public static ModProxy proxy = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
     public ZLib() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -37,10 +37,6 @@ public class ZLib {
 
     public void onClientSetup(final FMLClientSetupEvent event) {
         proxy.onClientSetup(event);
-    }
-
-    public static Logger getLogger() {
-        return LOGGER;
     }
 
 }
