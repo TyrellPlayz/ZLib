@@ -13,6 +13,7 @@ plugins {
     id 'java'
     id 'idea'
     id 'maven-publish'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 apply plugin: 'net.minecraftforge.gradle'
 
@@ -148,5 +149,16 @@ publishing {
         //    artifactId = project.archivesBaseName
         //    from components.java
         //}
+    }
+}
+
+curseforge {
+    apiKey = project.findProperty('curseforge_apikey') ?: '0'
+    project {
+        id = curse_project_id
+        changelog = file('changelog.html')
+        changelogType = 'html'
+        releaseType = 'beta'
+        addGameVersion "${minecraft_version}"
     }
 }
