@@ -33,7 +33,8 @@ public class MathsUtil {
     }
 
     public static double getDistance(BlockPos pos1, BlockPos pos2) {
-        return Math.sqrt(pos1.distSqr(pos2.getX()+0.5,pos2.getY()+0.5,pos2.getZ()+0.5,true));
+        return pos1.distToCenterSqr(pos2.getX(),pos2.getY(),pos2.getZ());
+        //return Math.sqrt(pos1.distSqr(pos2.getX()+0.5,pos2.getY()+0.5,pos2.getZ()+0.5,true));
     }
 
     @Nullable
